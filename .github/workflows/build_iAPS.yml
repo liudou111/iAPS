@@ -145,10 +145,10 @@ jobs:
           vars.SCHEDULED_SYNC == 'true' && steps.sync.outputs.has_new_commits == 'false'
         run: echo "There were no new commits."
 
+      # No PAT needed here: a plain checkout uses the default GITHUB_TOKEN.
       - name: Checkout Repo for building
         uses: actions/checkout@v5
         with:
-          token: ${{ secrets.GH_PAT }}
           submodules: recursive
           ref: ${{ env.TARGET_BRANCH }}
 
